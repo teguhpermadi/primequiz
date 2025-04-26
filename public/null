@@ -1,0 +1,46 @@
+Student::latest()->get()
+Student::latest()->get()
+Student::latest()->get()
+Student::latest()->first()
+$s = Student::latest()->first();
+storage_path();
+$s = Student::latest()->first();
+publick();
+$s = Student::latest()->first();
+public();
+$s = Student::latest()->first();
+storage_path('public');
+$s = Student::latest()->first();
+public_path('public');
+$s = Student::latest()->first();
+public_path('storage');
+$s = Student::latest()->first();
+public_path('storage\app');
+$s = Student::latest()->first();
+public_path('storage\app\public');
+$s = Student::latest()->first();
+public_path('storage\app\public').$s->photo;
+$s = Student::latest()->first();
+resource_path('storage\app\public').$s->photo;
+$s = Student::latest()->first();
+storage_path('storage\app\public').$s->photo;
+$s = Student::latest()->first();
+storage_path('storage\app\public').$s->photo;
+$s = Student::latest()->first();
+storage_path('storage\app\public').$s->photo;
+$s = Student::latest()->first();
+Storage::disk('public/tmp')->url($s->photo);
+$s = Student::latest()->first();
+echo asset('storage/app/public'.$s->photo);
+$s = Student::latest()->first();
+echo asset('storage/app/public/'.$s->photo);
+$s = Student::latest()->first();
+echo asset('storage/app/public/tmp/'.$s->photo);
+$s = Student::latest()->first();
+echo asset('public/tmp/'.$s->photo);
+$s = Student::latest()->first();
+
+$s = Student::latest()->first();
+
+$s = Student::latest()->first();
+
