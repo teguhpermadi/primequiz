@@ -28,6 +28,12 @@ export function useAppLayout() {
             active: currentRoute.value == 'dashboard',
         },
         {
+            label: 'Student',
+            lucideIcon: LayoutGrid,
+            route: route('students.index'),
+            active: currentRoute.value == 'students',
+        },
+        {
             label: 'Info',
             lucideIcon: Info,
             items: [

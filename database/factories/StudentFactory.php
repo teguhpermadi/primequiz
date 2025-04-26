@@ -23,7 +23,7 @@ class StudentFactory extends Factory
             'name' => fake()->name(),
             'nisn' => fake()->unique()->numerify('##########'),
             'nis' => fake()->unique()->numerify('##########'),
-            'photo' => $faker->imageUrl(640, 480),
+            'photo' => $faker->image(storage_path('app/public/tmp'), 640, 480, false),
         ];
     }
 }
