@@ -16,11 +16,14 @@ class StudentFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = \Faker\Factory::create();
+        $faker->addProvider(new \Smknstd\FakerPicsumImages\FakerPicsumImagesProvider($faker));
+
         return [
             'name' => fake()->name(),
             'nisn' => fake()->unique()->numerify('##########'),
             'nis' => fake()->unique()->numerify('##########'),
-            'photo' => fake()->imageUrl(640, 480, 'people', true),
+            'photo' => $faker->imageUrl(640, 480),
         ];
     }
 }
