@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue';
 import tailwindcss from "@tailwindcss/vite";
 import Components from 'unplugin-vue-components/vite';
 import { PrimeVueResolver } from '@primevue/auto-import-resolver';
+import { run } from "vite-plugin-run";
 
 // https://vitejs.dev/config/
 export default ({ mode }) => {
@@ -29,6 +30,13 @@ export default ({ mode }) => {
             Components({
                 resolvers: [PrimeVueResolver()],
             }),
+            run([
+                {
+                    name: "wayfinder",
+                    run: ["php", "artisan", "wayfinder:generate"],
+                    pattern: ["routes/**/*.php", "app/**/Http/**/*.php"],
+                },
+            ]),
         ],
         server: {
             port: devPort,
