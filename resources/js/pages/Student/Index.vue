@@ -94,12 +94,13 @@ const deleteStudent = () => {
                     class="flex space-x-3"
                 >
                     <template #body="slotProps">
-                        <Link
-                            :href="edit(slotProps.data.id).url"
-                            class="p-button p-component p-button-icon-only p-button-warn p-button-rounded p-button-outlined no-underline"
-                            ><i class="pi pi-check" style="color: amber"></i
-                        ></Link>
-
+                        <Button
+                            icon="pi pi-pencil"
+                            outlined
+                            rounded
+                            severity="warn"
+                            @click="$inertia.visit(edit(slotProps.data.id).url)"
+                        />
                         <Button
                             icon="pi pi-trash"
                             outlined
