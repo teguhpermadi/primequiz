@@ -9,12 +9,53 @@ import ColumnGroup from 'primevue/columngroup'; // optional
 import Row from 'primevue/row'; // optional
 import Avatar from 'primevue/avatar';
 import { ref, onMounted } from 'vue';
+import { Link } from '@inertiajs/vue3';
+import { edit } from '@/actions/App/Http/Controllers/StudentController';
+import { useToast } from 'primevue/usetoast';
+import { destroy } from '@/actions/App/Http/Controllers/StudentController';
+import { router } from '@inertiajs/vue3';
 
 const props = defineProps({
     students: Array,
 });
 
+const toast = useToast();
 const students = ref(props.students);
+const deleteStudentDialog = ref(false);
+const student = ref({});
+
+const confirmDeleteStudent = (std) => {
+    student.value = std;
+    deleteStudentDialog.value = true;
+};
+
+const deleteStudent = () => {
+    // products.value = products.value.filter(val => val.id !== product.value.id);
+    deleteStudentDialog.value = false;
+    router.delete(destroy.delete(student.value.id).url, {
+        preserveScroll: true,
+        onSuccess: () => {
+            students.value = students.value.filter(
+                (std) => std.id !== student.value.id
+            );
+            toast.add({
+                severity: 'success',
+                summary: 'Successful',
+                detail: 'Student ' + student.value.name + ' Deleted',
+                life: 3000,
+            });
+            student.value = {};
+        },
+        onError: (error) => {
+            toast.add({
+                severity: 'error',
+                summary: 'Error',
+                detail: error.response.data.message,
+                life: 3000,
+            });
+        },
+    });
+};
 </script>
 
 <template>
@@ -47,26 +88,57 @@ const students = ref(props.students);
                 <Column field="name" header="Name"></Column>
                 <Column field="nisn" header="NISN"></Column>
                 <Column field="nis" header="NIS"></Column>
-                <Column field="photo_url" header="Photo"></Column>
-                <Column :exportable="false" style="min-width: 12rem">
+                <Column
+                    :exportable="false"
+                    style="min-width: 12rem"
+                    class="flex space-x-3"
+                >
                     <template #body="slotProps">
-                        <Button
-                            icon="pi pi-pencil"
-                            outlined
-                            rounded
-                            class="mr-2"
-                            @click="editProduct(slotProps.data)"
-                        />
+                        <Link
+                            :href="edit(slotProps.data.id).url"
+                            class="p-button p-component p-button-icon-only p-button-warn p-button-rounded p-button-outlined no-underline"
+                            ><i class="pi pi-check" style="color: amber"></i
+                        ></Link>
+
                         <Button
                             icon="pi pi-trash"
                             outlined
                             rounded
                             severity="danger"
-                            @click="confirmDeleteProduct(slotProps.data)"
+                            @click="confirmDeleteStudent(slotProps.data)"
                         />
                     </template>
                 </Column>
             </DataTable>
+
+            <Dialog
+                v-model:visible="deleteStudentDialog"
+                :style="{ width: '450px' }"
+                header="Confirm"
+                :modal="true"
+            >
+                <div class="flex items-center gap-4">
+                    <i class="pi pi-exclamation-triangle !text-3xl" />
+                    <span v-if="student"
+                        >Are you sure you want to delete
+                        <b>{{ student.name }}</b
+                        >?</span
+                    >
+                </div>
+                <template #footer>
+                    <Button
+                        label="No"
+                        icon="pi pi-times"
+                        text
+                        @click="deleteStudentDialog = false"
+                    />
+                    <Button
+                        label="Yes"
+                        icon="pi pi-check"
+                        @click="deleteStudent"
+                    />
+                </template>
+            </Dialog>
         </div>
     </AppLayout>
 </template>
