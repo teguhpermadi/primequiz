@@ -24,7 +24,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Student/Create');
     }
 
     /**
@@ -32,7 +32,9 @@ class StudentController extends Controller
      */
     public function store(StoreStudentRequest $request)
     {
-        //
+        Student::create($request->validated());
+
+        return to_route('student.index');
     }
 
     /**
@@ -40,7 +42,9 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+        return Inertia::render('Student/Show', [
+            'student' => $student,
+        ]);
     }
 
     /**
@@ -48,7 +52,9 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        //
+        return Inertia::render('Student/Edit', [
+            'student' => $student,
+        ]);
     }
 
     /**
@@ -56,7 +62,9 @@ class StudentController extends Controller
      */
     public function update(UpdateStudentRequest $request, Student $student)
     {
-        //
+        $student->update($request->validated());
+
+        return to_route('student.index');
     }
 
     /**
@@ -64,6 +72,8 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        $student->delete();
+
+        return to_route('student.index');
     }
 }

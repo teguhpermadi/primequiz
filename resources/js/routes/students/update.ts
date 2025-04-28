@@ -2,7 +2,7 @@ import { queryParams, type QueryParams } from './../../wayfinder'
 
 /**
  * @see \App\Http\Controllers\StudentController::update
- * @see app\Http\Controllers\StudentController.php:57
+ * @see app\Http\Controllers\StudentController.php:63
  * @route /students/{student}
  */
 export const update = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -20,7 +20,7 @@ update.definition = {
 
 /**
  * @see \App\Http\Controllers\StudentController::update
- * @see app\Http\Controllers\StudentController.php:57
+ * @see app\Http\Controllers\StudentController.php:63
  * @route /students/{student}
  */
 update.url = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
@@ -51,7 +51,7 @@ update.url = (args: { student: string | { id: string } } | [student: string | { 
 
 /**
  * @see \App\Http\Controllers\StudentController::update
- * @see app\Http\Controllers\StudentController.php:57
+ * @see app\Http\Controllers\StudentController.php:63
  * @route /students/{student}
  */
 update.put = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -64,7 +64,7 @@ update.put = (args: { student: string | { id: string } } | [student: string | { 
 
 /**
  * @see \App\Http\Controllers\StudentController::update
- * @see app\Http\Controllers\StudentController.php:57
+ * @see app\Http\Controllers\StudentController.php:63
  * @route /students/{student}
  */
 update.patch = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {

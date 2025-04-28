@@ -151,7 +151,7 @@ store.post = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
 
 /**
  * @see \App\Http\Controllers\StudentController::show
- * @see app\Http\Controllers\StudentController.php:41
+ * @see app\Http\Controllers\StudentController.php:43
  * @route /students/{student}
  */
 export const show = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -169,7 +169,7 @@ show.definition = {
 
 /**
  * @see \App\Http\Controllers\StudentController::show
- * @see app\Http\Controllers\StudentController.php:41
+ * @see app\Http\Controllers\StudentController.php:43
  * @route /students/{student}
  */
 show.url = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
@@ -200,7 +200,7 @@ show.url = (args: { student: string | { id: string } } | [student: string | { id
 
 /**
  * @see \App\Http\Controllers\StudentController::show
- * @see app\Http\Controllers\StudentController.php:41
+ * @see app\Http\Controllers\StudentController.php:43
  * @route /students/{student}
  */
 show.get = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -213,7 +213,7 @@ show.get = (args: { student: string | { id: string } } | [student: string | { id
 
 /**
  * @see \App\Http\Controllers\StudentController::show
- * @see app\Http\Controllers\StudentController.php:41
+ * @see app\Http\Controllers\StudentController.php:43
  * @route /students/{student}
  */
 show.head = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -227,7 +227,7 @@ show.head = (args: { student: string | { id: string } } | [student: string | { i
 
 /**
  * @see \App\Http\Controllers\StudentController::edit
- * @see app\Http\Controllers\StudentController.php:49
+ * @see app\Http\Controllers\StudentController.php:53
  * @route /students/{student}/edit
  */
 export const edit = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -245,7 +245,7 @@ edit.definition = {
 
 /**
  * @see \App\Http\Controllers\StudentController::edit
- * @see app\Http\Controllers\StudentController.php:49
+ * @see app\Http\Controllers\StudentController.php:53
  * @route /students/{student}/edit
  */
 edit.url = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
@@ -276,7 +276,7 @@ edit.url = (args: { student: string | { id: string } } | [student: string | { id
 
 /**
  * @see \App\Http\Controllers\StudentController::edit
- * @see app\Http\Controllers\StudentController.php:49
+ * @see app\Http\Controllers\StudentController.php:53
  * @route /students/{student}/edit
  */
 edit.get = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -289,7 +289,7 @@ edit.get = (args: { student: string | { id: string } } | [student: string | { id
 
 /**
  * @see \App\Http\Controllers\StudentController::edit
- * @see app\Http\Controllers\StudentController.php:49
+ * @see app\Http\Controllers\StudentController.php:53
  * @route /students/{student}/edit
  */
 edit.head = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -303,7 +303,7 @@ edit.head = (args: { student: string | { id: string } } | [student: string | { i
 
 /**
  * @see \App\Http\Controllers\StudentController::update
- * @see app\Http\Controllers\StudentController.php:57
+ * @see app\Http\Controllers\StudentController.php:63
  * @route /students/{student}
  */
 export const update = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -321,7 +321,7 @@ update.definition = {
 
 /**
  * @see \App\Http\Controllers\StudentController::update
- * @see app\Http\Controllers\StudentController.php:57
+ * @see app\Http\Controllers\StudentController.php:63
  * @route /students/{student}
  */
 update.url = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
@@ -352,7 +352,7 @@ update.url = (args: { student: string | { id: string } } | [student: string | { 
 
 /**
  * @see \App\Http\Controllers\StudentController::update
- * @see app\Http\Controllers\StudentController.php:57
+ * @see app\Http\Controllers\StudentController.php:63
  * @route /students/{student}
  */
 update.put = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -365,7 +365,7 @@ update.put = (args: { student: string | { id: string } } | [student: string | { 
 
 /**
  * @see \App\Http\Controllers\StudentController::update
- * @see app\Http\Controllers\StudentController.php:57
+ * @see app\Http\Controllers\StudentController.php:63
  * @route /students/{student}
  */
 update.patch = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -379,7 +379,7 @@ update.patch = (args: { student: string | { id: string } } | [student: string | 
 
 /**
  * @see \App\Http\Controllers\StudentController::destroy
- * @see app\Http\Controllers\StudentController.php:65
+ * @see app\Http\Controllers\StudentController.php:73
  * @route /students/{student}
  */
 export const destroy = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -397,7 +397,7 @@ destroy.definition = {
 
 /**
  * @see \App\Http\Controllers\StudentController::destroy
- * @see app\Http\Controllers\StudentController.php:65
+ * @see app\Http\Controllers\StudentController.php:73
  * @route /students/{student}
  */
 destroy.url = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
@@ -428,7 +428,7 @@ destroy.url = (args: { student: string | { id: string } } | [student: string | {
 
 /**
  * @see \App\Http\Controllers\StudentController::destroy
- * @see app\Http\Controllers\StudentController.php:65
+ * @see app\Http\Controllers\StudentController.php:73
  * @route /students/{student}
  */
 destroy.delete = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {

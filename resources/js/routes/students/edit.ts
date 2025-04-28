@@ -2,7 +2,7 @@ import { queryParams, type QueryParams } from './../../wayfinder'
 
 /**
  * @see \App\Http\Controllers\StudentController::edit
- * @see app\Http\Controllers\StudentController.php:49
+ * @see app\Http\Controllers\StudentController.php:53
  * @route /students/{student}/edit
  */
 export const edit = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -20,7 +20,7 @@ edit.definition = {
 
 /**
  * @see \App\Http\Controllers\StudentController::edit
- * @see app\Http\Controllers\StudentController.php:49
+ * @see app\Http\Controllers\StudentController.php:53
  * @route /students/{student}/edit
  */
 edit.url = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
@@ -51,7 +51,7 @@ edit.url = (args: { student: string | { id: string } } | [student: string | { id
 
 /**
  * @see \App\Http\Controllers\StudentController::edit
- * @see app\Http\Controllers\StudentController.php:49
+ * @see app\Http\Controllers\StudentController.php:53
  * @route /students/{student}/edit
  */
 edit.get = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -64,7 +64,7 @@ edit.get = (args: { student: string | { id: string } } | [student: string | { id
 
 /**
  * @see \App\Http\Controllers\StudentController::edit
- * @see app\Http\Controllers\StudentController.php:49
+ * @see app\Http\Controllers\StudentController.php:53
  * @route /students/{student}/edit
  */
 edit.head = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {

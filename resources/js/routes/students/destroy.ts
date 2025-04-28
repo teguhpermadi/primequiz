@@ -2,7 +2,7 @@ import { queryParams, type QueryParams } from './../../wayfinder'
 
 /**
  * @see \App\Http\Controllers\StudentController::destroy
- * @see app\Http\Controllers\StudentController.php:65
+ * @see app\Http\Controllers\StudentController.php:73
  * @route /students/{student}
  */
 export const destroy = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -20,7 +20,7 @@ destroy.definition = {
 
 /**
  * @see \App\Http\Controllers\StudentController::destroy
- * @see app\Http\Controllers\StudentController.php:65
+ * @see app\Http\Controllers\StudentController.php:73
  * @route /students/{student}
  */
 destroy.url = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
@@ -51,7 +51,7 @@ destroy.url = (args: { student: string | { id: string } } | [student: string | {
 
 /**
  * @see \App\Http\Controllers\StudentController::destroy
- * @see app\Http\Controllers\StudentController.php:65
+ * @see app\Http\Controllers\StudentController.php:73
  * @route /students/{student}
  */
 destroy.delete = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {

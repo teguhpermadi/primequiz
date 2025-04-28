@@ -2,7 +2,7 @@ import { queryParams, type QueryParams } from './../../wayfinder'
 
 /**
  * @see \App\Http\Controllers\StudentController::show
- * @see app\Http\Controllers\StudentController.php:41
+ * @see app\Http\Controllers\StudentController.php:43
  * @route /students/{student}
  */
 export const show = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -20,7 +20,7 @@ show.definition = {
 
 /**
  * @see \App\Http\Controllers\StudentController::show
- * @see app\Http\Controllers\StudentController.php:41
+ * @see app\Http\Controllers\StudentController.php:43
  * @route /students/{student}
  */
 show.url = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
@@ -51,7 +51,7 @@ show.url = (args: { student: string | { id: string } } | [student: string | { id
 
 /**
  * @see \App\Http\Controllers\StudentController::show
- * @see app\Http\Controllers\StudentController.php:41
+ * @see app\Http\Controllers\StudentController.php:43
  * @route /students/{student}
  */
 show.get = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -64,7 +64,7 @@ show.get = (args: { student: string | { id: string } } | [student: string | { id
 
 /**
  * @see \App\Http\Controllers\StudentController::show
- * @see app\Http\Controllers\StudentController.php:41
+ * @see app\Http\Controllers\StudentController.php:43
  * @route /students/{student}
  */
 show.head = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
