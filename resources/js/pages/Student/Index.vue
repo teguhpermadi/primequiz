@@ -10,9 +10,8 @@ import Row from 'primevue/row'; // optional
 import Avatar from 'primevue/avatar';
 import { ref, onMounted } from 'vue';
 import { Link } from '@inertiajs/vue3';
-import { edit } from '@/actions/App/Http/Controllers/StudentController';
+import { create, edit, destroy } from '@/actions/App/Http/Controllers/StudentController';
 import { useToast } from 'primevue/usetoast';
-import { destroy } from '@/actions/App/Http/Controllers/StudentController';
 import { router } from '@inertiajs/vue3';
 
 const props = defineProps({
@@ -22,7 +21,9 @@ const props = defineProps({
 const toast = useToast();
 const students = ref(props.students);
 const deleteStudentDialog = ref(false);
+const deleteSelectedStudentsDialog = ref(false)
 const student = ref({});
+const selectedStudents = ref();
 
 const confirmDeleteStudent = (std) => {
     student.value = std;
@@ -56,6 +57,21 @@ const deleteStudent = () => {
         },
     });
 };
+
+const newStudent = () => {
+    router.get(create().url);
+};
+
+const confirmDeleteSelected = () => {
+    deleteSelectedStudentsDialog.value = true;
+};
+
+const deleteSelectedStudents = () => {
+    // kirim data hanya id student saja
+    const ids = selectedStudents.value.map((std) => std.id);
+    console.log(ids)
+    deleteSelectedStudentsDialog.value = false;
+}
 </script>
 
 <template>
@@ -69,73 +85,59 @@ const deleteStudent = () => {
         </Card>
 
         <div class="card">
-            <DataTable
-                :value="students"
-                paginator
-                :rows="5"
-                :rowsPerPageOptions="[5, 10, 20, 50]"
-                tableStyle="min-width: 50rem"
-            >
+            <Toolbar class="mb-6">
+                <template #start>
+                    <Button label="New" icon="pi pi-plus" class="mr-2" @click="newStudent" />
+                    <Button label="Delete" icon="pi pi-trash" severity="danger" outlined @click="confirmDeleteSelected"
+                        :disabled="!selectedStudents || !selectedStudents.length" />
+                </template>
+
+                <!-- <template #end>
+                    <FileUpload mode="basic" accept="image/*" :maxFileSize="1000000" label="Import" customUpload chooseLabel="Import" class="mr-2" auto :chooseButtonProps="{ severity: 'secondary' }" />
+                    <Button label="Export" icon="pi pi-upload" severity="secondary" @click="exportCSV($event)" />
+                </template> -->
+            </Toolbar>
+            <DataTable :value="students" paginator dataKey="id" v-model:selection="selectedStudents" :rows="5"
+                :rowsPerPageOptions="[5, 10, 20, 50]" tableStyle="min-width: 50rem">
+                <Column selectionMode="multiple" style="width: 3rem" :exportable="false"></Column>
                 <Column :exportable="false">
                     <template #body="slotProps">
-                        <Avatar
-                            :image="slotProps.data.photo_url"
-                            size="large"
-                            shape="circle"
-                        />
+                        <Avatar :image="slotProps.data.photo_url" size="large" shape="circle" />
                     </template>
                 </Column>
                 <Column field="name" header="Name"></Column>
                 <Column field="nisn" header="NISN"></Column>
                 <Column field="nis" header="NIS"></Column>
-                <Column
-                    :exportable="false"
-                >
+                <Column :exportable="false">
                     <template #body="slotProps">
-                        <Button
-                            icon="pi pi-pencil"
-                            outlined
-                            rounded
-                            severity="warn"
-                            @click="$inertia.visit(edit(slotProps.data.id).url)"
-                        />
-                        <Button
-                            icon="pi pi-trash"
-                            outlined
-                            rounded
-                            severity="danger"
-                            @click="confirmDeleteStudent(slotProps.data)"
-                        />
+                        <Button icon="pi pi-pencil" outlined rounded severity="warn"
+                            @click="$inertia.visit(edit(slotProps.data.id).url)" />
+                        <Button icon="pi pi-trash" outlined rounded severity="danger"
+                            @click="confirmDeleteStudent(slotProps.data)" />
                     </template>
                 </Column>
             </DataTable>
 
-            <Dialog
-                v-model:visible="deleteStudentDialog"
-                :style="{ width: '450px' }"
-                header="Confirm"
-                :modal="true"
-            >
+            <Dialog v-model:visible="deleteStudentDialog" :style="{ width: '450px' }" header="Confirm" :modal="true">
                 <div class="flex items-center gap-4">
                     <i class="pi pi-exclamation-triangle !text-3xl" />
-                    <span v-if="student"
-                        >Are you sure you want to delete
-                        <b>{{ student.name }}</b
-                        >?</span
-                    >
+                    <span v-if="student">Are you sure you want to delete
+                        <b>{{ student.name }}</b>?</span>
                 </div>
                 <template #footer>
-                    <Button
-                        label="No"
-                        icon="pi pi-times"
-                        text
-                        @click="deleteStudentDialog = false"
-                    />
-                    <Button
-                        label="Yes"
-                        icon="pi pi-check"
-                        @click="deleteStudent"
-                    />
+                    <Button label="No" icon="pi pi-times" text @click="deleteStudentDialog = false" />
+                    <Button label="Yes" icon="pi pi-check" @click="deleteStudent" />
+                </template>
+            </Dialog>
+
+            <Dialog v-model:visible="deleteSelectedStudentsDialog" :style="{ width: '450px' }" header="Confirm" :modal="true">
+                <div class="flex items-center gap-4">
+                    <i class="pi pi-exclamation-triangle !text-3xl" />
+                    <span v-if="selectedStudents">Are you sure you want to delete the selected students?</span>
+                </div>
+                <template #footer>
+                    <Button label="No" icon="pi pi-times" text @click="deleteSelectedStudentsDialog = false" />
+                    <Button label="Yes" icon="pi pi-check" text @click="deleteSelectedStudents" />
                 </template>
             </Dialog>
         </div>
