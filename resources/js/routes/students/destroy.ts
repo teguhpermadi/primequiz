@@ -5,7 +5,7 @@ import { queryParams, type QueryParams } from './../../wayfinder'
  * @see app\Http\Controllers\StudentController.php:73
  * @route /students/{student}
  */
-export const destroy = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
+export const destroy = (args: { student: string | number } | [student: string | number] | string | number, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'delete',
 } => ({
@@ -23,13 +23,9 @@ destroy.definition = {
  * @see app\Http\Controllers\StudentController.php:73
  * @route /students/{student}
  */
-destroy.url = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
+destroy.url = (args: { student: string | number } | [student: string | number] | string | number, options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { student: args }
-    }
-
-    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
-        args = { student: args.id }
     }
 
     if (Array.isArray(args)) {
@@ -39,9 +35,7 @@ destroy.url = (args: { student: string | { id: string } } | [student: string | {
     }
 
     const parsedArgs = {
-        student: typeof args.student === 'object'
-            ? args.student.id
-            : args.student,
+        student: args.student,
     }
 
     return destroy.definition.url
@@ -54,7 +48,7 @@ destroy.url = (args: { student: string | { id: string } } | [student: string | {
  * @see app\Http\Controllers\StudentController.php:73
  * @route /students/{student}
  */
-destroy.delete = (args: { student: string | { id: string } } | [student: string | { id: string }] | string | { id: string }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
+destroy.delete = (args: { student: string | number } | [student: string | number] | string | number, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'delete',
 } => ({

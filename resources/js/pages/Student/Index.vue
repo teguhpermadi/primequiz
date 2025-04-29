@@ -69,8 +69,33 @@ const confirmDeleteSelected = () => {
 const deleteSelectedStudents = () => {
     // kirim data hanya id student saja
     const ids = selectedStudents.value.map((std) => std.id);
-    console.log(ids)
+    // hitung jumlah ids
+    const count = ids.length;
+    router.delete(destroy.delete(ids).url, {
+        preserveScroll: true,
+        onSuccess: () => {
+            students.value = students.value.filter(
+                (std) => !ids.includes(std.id)
+            );
+            toast.add({
+                severity: 'success',
+                summary: 'Successful',
+                detail: 'Deleted ' + count + ' students',
+                life: 3000,
+            });
+
+        },
+        onError: (error) => {
+            toast.add({
+                severity: 'error',
+                summary: 'Error',
+                detail: error.response.data.message,
+                life: 3000,
+            });
+        }
+    });
     deleteSelectedStudentsDialog.value = false;
+    selectedStudents.value = null;
 }
 </script>
 
@@ -130,7 +155,8 @@ const deleteSelectedStudents = () => {
                 </template>
             </Dialog>
 
-            <Dialog v-model:visible="deleteSelectedStudentsDialog" :style="{ width: '450px' }" header="Confirm" :modal="true">
+            <Dialog v-model:visible="deleteSelectedStudentsDialog" :style="{ width: '450px' }" header="Confirm"
+                :modal="true">
                 <div class="flex items-center gap-4">
                     <i class="pi pi-exclamation-triangle !text-3xl" />
                     <span v-if="selectedStudents">Are you sure you want to delete the selected students?</span>

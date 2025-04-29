@@ -15,7 +15,7 @@ class StudentController extends Controller
     public function index()
     {
         return Inertia::render('Student/Index', [
-            'students' => Student::all(),
+            'students' => Student::latest()->get(),
         ]);
     }
 
@@ -70,9 +70,14 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Student $student)
+    public function destroy($students)
     {
-        $student->delete();
+        // check $students is an array or string
+        if (is_array($students)) {
+            Student::whereIn('id', $students)->delete();
+        } else {
+            Student::destroy($students);
+        }
 
         return to_route('students.index');
     }
