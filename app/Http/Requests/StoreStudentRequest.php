@@ -23,8 +23,9 @@ class StoreStudentRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'nisn' => ['required', 'string', 'unique:students'],
-            'nis' => ['required', 'string', 'unique:students'],
+            'nisn' => ['string', 'unique:students', 'regex:\d+'],
+            'nis' => ['string', 'unique:students', 'regex:\d+'],
+            'photo' => ['image', 'mimes:jpg,jpeg,png', 'max:2048'],
         ];
     }
 }

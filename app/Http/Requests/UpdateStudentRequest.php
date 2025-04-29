@@ -23,8 +23,9 @@ class UpdateStudentRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'nisn' => ['required', 'string', 'unique:students,nisn,' . $this->student->id],
-            'nis' => ['required', 'string', 'unique:students,nis,' . $this->student->id],
+            'nisn' => ['string', 'unique:students,nisn,' . $this->student->id, 'regex:\d+'],
+            'nis' => ['string', 'unique:students,nis,' . $this->student->id, 'regex:\d+'],
+            'photo' => ['image', 'mimes:jpg,jpeg,png', 'max:2048'],
         ];
     }
 }
