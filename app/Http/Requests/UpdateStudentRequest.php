@@ -11,7 +11,7 @@ class UpdateStudentRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class UpdateStudentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => ['required', 'string', 'max:255'],
+            'nisn' => ['required', 'string', 'unique:students,nisn,' . $this->student->id],
+            'nis' => ['required', 'string', 'unique:students,nis,' . $this->student->id],
         ];
     }
 }
