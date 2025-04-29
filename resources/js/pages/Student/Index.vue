@@ -90,8 +90,6 @@ const deleteStudent = () => {
                 <Column field="nis" header="NIS"></Column>
                 <Column
                     :exportable="false"
-                    style="min-width: 12rem"
-                    class="flex space-x-3"
                 >
                     <template #body="slotProps">
                         <Button
