@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nuptk')->nullable()->unique();
             $table->string('photo')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

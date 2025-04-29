@@ -24,7 +24,7 @@ class StoreTeacherRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'nip' => ['string', 'unique:teachers'],
-            'nuptk' => ['string', 'unique:teachers', 'regex:\d+'],
+            'nuptk' => ['string', 'unique:teachers'],
             'photo' => ['image', 'mimes:jpg,jpeg,png', 'max:2048'],
         ];
     }

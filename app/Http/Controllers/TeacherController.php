@@ -14,7 +14,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Teachers/Index', [
+        return Inertia::render('Teacher/Index', [
             'teachers' => Teacher::latest()->get(),
         ]);
     }
@@ -24,7 +24,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Teachers/Create');
+        return Inertia::render('Teacher/Create');
     }
 
     /**
@@ -42,7 +42,7 @@ class TeacherController extends Controller
      */
     public function show(Teacher $teacher)
     {
-        return Inertia::render('Teachers/Show', [
+        return Inertia::render('Teacher/Show', [
             'teacher' => $teacher,
         ]);
     }
@@ -52,7 +52,7 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-        return Inertia::render('Teachers/Edit', [
+        return Inertia::render('Teacher/Edit', [
             'teacher' => $teacher,
         ]);
     }
