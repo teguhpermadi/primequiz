@@ -17,7 +17,7 @@ class GradeFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->unique()->word(),
+            'name' => $this->faker->word(),
             'level' => $this->faker->numberBetween(1, 12),
         ];
     }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('grades', function (Blueprint $table) {
             $table->ulid('id')->primary();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('level')->nullable();
             $table->timestamps();
             $table->softDeletes();
