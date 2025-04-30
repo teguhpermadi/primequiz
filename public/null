@@ -1,4 +1,2 @@
-$s = Student::get()
-$s = Student::get()
-$s = Student::get()
-$s = Student::get()
+LevelEnum::cases()
+App\Enums\LevelEnum::cases()
