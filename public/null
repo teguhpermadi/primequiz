@@ -1,2 +1,5 @@
-LevelEnum::cases()
-App\Enums\LevelEnum::cases()
+Grade::all()
+App\Models\Grade::all()
+App\Models\Grade::all()
+App\Models\Grade::all()
+App\Models\Grade::all()

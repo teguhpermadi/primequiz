@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\LevelEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +19,7 @@ class GradeFactory extends Factory
     {
         return [
             'name' => $this->faker->word(),
-            'level' => $this->faker->numberBetween(1, 12),
+            'level' => fake()->randomElement(LevelEnum::cases()),
         ];
     }
 }
