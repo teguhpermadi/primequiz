@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\LevelEnum;
 use App\Models\Grade;
 use App\Http\Requests\StoreGradeRequest;
 use App\Http\Requests\UpdateGradeRequest;
@@ -24,8 +25,14 @@ class GradeController extends Controller
      */
     public function create()
     {
+        $levels = collect(LevelEnum::cases())->map(fn($level) => [
+            'name' => ucfirst(strtolower($level->label())), // atau ubah sesuai kebutuhan
+            'code' => $level->value,
+        ]);
+
         return Inertia::render('Grade/Create', [
             'grades' => Grade::all(),
+            'levels' => $levels,
         ]);
     }
 
@@ -56,8 +63,14 @@ class GradeController extends Controller
      */
     public function edit(Grade $grade)
     {
+        $levels = collect(LevelEnum::cases())->map(fn($level) => [
+            'name' => ucfirst(strtolower($level->label())), // atau ubah sesuai kebutuhan
+            'code' => $level->value,
+        ]);
+
         return Inertia::render('Grade/Edit', [
             'grade' => $grade,
+            'levels' => $levels,
         ]);
     }
 

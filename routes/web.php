@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GradeController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Foundation\Application;
@@ -20,6 +21,7 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('students', StudentController::class);
     Route::resource('teachers', TeacherController::class);
+    Route::resource('grades', GradeController::class);
 });
 
 require __DIR__ . '/settings.php';

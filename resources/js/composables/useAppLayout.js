@@ -40,6 +40,12 @@ export function useAppLayout() {
             active: currentRoute.value == 'teachers',
         },
         {
+            label: 'Grade',
+            lucideIcon: LayoutGrid,
+            route: route('grades.index'),
+            active: currentRoute.value == 'grades',
+        },
+        {
             label: 'Info',
             lucideIcon: Info,
             items: [
