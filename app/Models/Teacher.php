@@ -38,4 +38,9 @@ class Teacher extends Model
 
         return null;
     }
+
+    public function academicYears()
+    {
+        return $this->hasMany(AcademicYear::class);
+    }
 }
