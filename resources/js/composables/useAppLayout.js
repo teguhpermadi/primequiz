@@ -46,6 +46,12 @@ export function useAppLayout() {
             active: currentRoute.value == 'grades',
         },
         {
+            label: 'Academic Year',
+            lucideIcon: LayoutGrid,
+            route: route('academic-years.index'),
+            active: currentRoute.value == 'academic-years',
+        },
+        {
             label: 'Info',
             lucideIcon: Info,
             items: [

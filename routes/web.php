@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AcademicYearController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
@@ -22,6 +23,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('students', StudentController::class);
     Route::resource('teachers', TeacherController::class);
     Route::resource('grades', GradeController::class);
+    Route::resource('academic-years', AcademicYearController::class);
 });
 
 require __DIR__ . '/settings.php';
